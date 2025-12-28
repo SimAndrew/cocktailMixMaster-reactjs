@@ -1,19 +1,14 @@
-import { Link, useLoaderData } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useLoaderData, Navigate } from 'react-router-dom';
 import Wrapper from '../wrappers/CocktailPage.js';
+import { cocktailLoader } from './cocktailLoader.js';
 
-const singleCocktailUrl =
-	'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
-
-export const loader = async ({ params }) => {
-	const { id } = params;
-	const { data } = await axios.get(`${singleCocktailUrl}${id}`);
-
-	return { id, data };
-};
+// eslint-disable-next-line react-refresh/only-export-components
+export const loader = cocktailLoader;
 
 const Cocktail = () => {
-	const { id, data } = useLoaderData();
+	const { data } = useLoaderData();
+
+	if (!data || data.drinks === null) return <Navigate to="/" />;
 
 	const singleDrink = data.drinks[0];
 
