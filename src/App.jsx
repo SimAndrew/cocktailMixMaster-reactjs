@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import {
 	About,
@@ -60,7 +60,7 @@ function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />;
-			<ReactQueryDevtools initialIsOpen={false} />
+			{/*<ReactQueryDevtools initialIsOpen={false} />*/}
 		</QueryClientProvider>
 	);
 }
